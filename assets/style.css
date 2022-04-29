@@ -68,3 +68,19 @@ section .heading {
 .hidden {
     display: none;
 }
+
+.choices {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+   
+  }
+  
+  .choices button {
+    margin: 1rem;
+    border-radius: 3px;
+  }
+
+  .choices :hover {
+      background-color: white;
+  }
