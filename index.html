@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/style.css" />
+    <title>Coding Quiz</title>
+</head>
+<body>
+    <header>
+        <a href="#" class="highscore-button">View Highscores</a>
+       <span class="timer">Time: 60 seconds </span>
+    </header>
+    
+    <main>
+        <section id="welcome">
+        <h1 class= "heading">Coding Quiz Challenge</h1>
+        <p class="start desc">Try to answer the following code-related questions within the time limit.
+            Keep in mind that incorrect answers will penalize your score time by five seconds. Each question is worth five points.
+        </p>
+        <button class="start-button">Start Quiz</button>
+        </section>
+
+       <section id="quiz" class="hidden">
+            <h3 class="question-heading"></h3>
+            <div class="choices">
+            </div>
+            <div class="response">
+            </div>
+       </section>
+
+       <section id="gameover" class="hidden">
+           <h3 class="heading">All Done!</h3>
+           <p class="final-score"></p>
+           <form class="record-scores">
+           <label for="initials">Enter Name</label>
+           <textarea id="name-input" name="name" placeholder = "Enter Name Here"></textarea>
+           <input type="submit" class = "score-button" value="Submit">
+           </form>
+       </section>
+
+       <section id="highscores" class="hidden">
+           <h3 class="heading">Highscores</h3>
+           
+           <div class="card">
+            <p>Name: <span id="saved-name"></span></p>
+            <p>Score: <span id="saved-score"></span></p>
+            </div>
+            <div class="highscore-buttons">
+                <button class="play-again">Play Again</button>
+                <button class="clear-scores">Clear Highscores</button>
+            </div>
+       </section>
+    </main>
+    <script src="assets/script.js"></script>
+</body>
+</html>
