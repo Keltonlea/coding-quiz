@@ -11,6 +11,7 @@ var questionEl = document.querySelector(".question-heading");
 var choicesEl = document.querySelector(".choices");
 var answerButtonEl = document.getElementById('answer');
 var submitScoresEl = document.querySelector(".score-button");
+var highscoresEL = document.querySelector(".highscores-list");
 
 
 var sections = ["welcome", "quiz", "gameover", "highscores"];
@@ -45,30 +46,28 @@ function renderHighscores() {
    
     renderSection("highscores");
       //save related form data as object
-      var dataInput = {
-        name: document.querySelector("#name-input").value,
-        highscore: score,
-    };
+    //   var dataInput = {
+    //     name: document.querySelector("#name-input").value,
+    //     highscore: score,
+    // };
       
-    localStorage.setItem("dataInput", JSON.stringify(dataInput));
-    // Use JSON.parse() to convert text to JavaScript object
-    var lastScore = JSON.parse(localStorage.getItem("dataInput"));
-    
-
+    // localStorage.setItem("dataInput", JSON.stringify(dataInput));
+    // // Use JSON.parse() to convert text to JavaScript object
+    var highscores = JSON.parse(localStorage.getItem("highscores"));
+    highscoresEL.innerHTML = "";
+    for (var i = 0; i < highscores.length; i++)
+    var highscoreObject = highscores[i];
+    var listItem = document.createElement ("li");
+    listItem.innerText = highscoreObject.name + " - " + highscoreObject.highscore;
+    highscoresEL.appendChild(listItem)
     // Check if data is returned, if not exit out of the function
-    if (lastScore !== null) {
-       document.getElementById("saved-name").innerHTML = lastScore.name;
-        document.getElementById("saved-score").innerHTML = lastScore.highscore;
-    }else {
-        return;
-    }
-    clearScores.addEventListener("click", function(event) {
-        // clear all li elements
-        document.querySelector(".card").innerHTML = "";
-        // remove "highscores" from local storage
-        localStorage.removeItem("dataInput");
-        renderHighscores();
-    });
+    // if (lastScore !== null) {
+    //    document.getElementById("saved-name").innerHTML = lastScore.name;
+    //     document.getElementById("saved-score").innerHTML = lastScore.highscore;
+    // }else {
+    //     return;
+    // }
+    
 }
 
 function renderGameover() {
@@ -252,8 +251,23 @@ function setQuestionsList() {
 //event listener to start button to call startQuiz function on click 
 submitScoresEl.addEventListener("click", function(event) {
     event.preventDefault();
-    renderHighscores();
+    let highscores = JSON.parse(localStorage.getItem("highscores"));
+
+        if (highscores == null) {
+            highscores = [];
+        }
+
+        highscores.push(
+            {
+                name: document.querySelector("#name-input").value,
+                highscore: score,
+            }
+        );
+        localStorage.setItem("highscores", JSON.stringify(highscores));
+        renderHighscores();
     });
+    
+
 startButton.addEventListener("click", startQuiz);
 playAgainButton.addEventListener("click", function(){
     location.href= "https://keltonlea.github.io/uw-homework-4/"
@@ -265,4 +279,11 @@ choicesEl.addEventListener("click", function(event) {
     if (event.target.nodeName === "BUTTON") {
         checkAnswer(event.target);
     }
+});
+clearScores.addEventListener("click", function(event) {
+    // clear all li elements
+    document.querySelector(".card").innerHTML = "";
+    // remove "highscores" from local storage
+    localStorage.clear();
+    renderHighscores();
 });
