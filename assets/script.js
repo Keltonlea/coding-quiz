@@ -255,9 +255,10 @@ submitScoresEl.addEventListener("click", function(event) {
     renderHighscores();
     });
 startButton.addEventListener("click", startQuiz);
-// playAgainButton.addEventListener("click", function(){
-//     location.href= "https://keltonlea.github.io/uw-bootcamp-a4/";
-// });
+playAgainButton.addEventListener("click", function(){
+    location.href= "https://keltonlea.github.io/uw-homework-4/"
+});
+
 viewHighscoresButton.addEventListener("click", renderHighscores);
 choicesEl.addEventListener("click", function(event) {
     // ignore if target isn't a button
