@@ -85,11 +85,11 @@ section .heading {
   .choices button {
     margin: 1rem;
     border-radius: 3px;
-    color:black;
+   
   }
 
  .choices button:hover {
-     color: black;
+     background-color: #5bc0de;
  }
 
   .choices :hover {
