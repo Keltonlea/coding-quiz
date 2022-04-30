@@ -33,7 +33,7 @@ function init() {
     clearScores = document.querySelector(".clear-scores");
     questionEl = document.querySelector(".question-heading");
     choicesEl = document.querySelector(".choices");
-    answerButtonEl = document.getElementById('answer');
+    // answerButtonEl = document.getElementById('answer');
     submitScoresEl = document.querySelector(".score-button");
     highscoresEl = document.querySelector(".highscores-list");
 
@@ -237,17 +237,17 @@ function setQuestionsList() {
             answer: "1995",
         },
         {
-            question: 'How is the following expression evaluated in JavaScript:\n"2" + "2" - "2"',
+            question: 'How is the following expression evaluated in JavaScript:\n"5" + "5" - "5"',
             choices: [
-                '"2"',
-                '"20"',
-                "2",
-                "20",
+                '"5"',
+                '"50"',
+                "5",
+                "50",
             ],
-            answer: "20",
+            answer: "50",
         },
         {
-            question: 'How is the following expression evaluated in JavaScript:\n"23" === 23',
+            question: 'How is the following expression evaluated in JavaScript:\n"50" === 50',
             choices: [
                 "true",
                 "false",
@@ -255,21 +255,23 @@ function setQuestionsList() {
             answer: "false",
         },
         {
-            question: "How is the following expression evaluated in JavaScript:\n.1 + .2 !== .3",
+            question: "How long did it take to develop JavaScript?",
             choices: [
-                "true",
-                "false",
+                "1 year",
+                "10 days",
+                "2 years",
+                "63 days",
             ],
-            answer: "true",
+            answer: "10 days",
         },
         {
             question: "How do you create a function in JavaScript?",
             choices: [
-                "function foo()",
-                "function:foo()",
-                "function = foo()",
+                "function myFunction()",
+                "function:myFunction()",
+                "function = myFunction()",
             ],
-            answer: "function foo()",
+            answer: "function myFunction()",
         },
         {
             question: "JavaScript is the same as Java?",
@@ -280,13 +282,16 @@ function setQuestionsList() {
             answer: "false",
         },
         {
-            question: "When declaring a variable what's the difference between the 'let' and 'var' keywords?",
+            question: "Who invented the first ever JavaScript?",
             choices: [
-                "No difference",
-                "'let' limits the variable scope to block statements, while 'var' doesn't",
+                "Tim Cook",
+                "Ada Loveless",
                 "let doesn't exist in JavaScript",
+                "Erlich Bachman",
+                "Brendan Eich",
+
             ],
-            answer: "'let' limits the variable scope to block statements, while 'var' doesn't",
+            answer: "Brendan Eich",
         },
         {
             question: "Is JavaScript case-sensitive?",
