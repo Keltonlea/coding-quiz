@@ -11,7 +11,7 @@ var questionEl = document.querySelector(".question-heading");
 var choicesEl = document.querySelector(".choices");
 var answerButtonEl = document.getElementById('answer');
 var submitScoresEl = document.querySelector(".score-button");
-var highscoresEL = document.querySelector(".highscores-list");
+var highscoresEl = document.querySelector(".highscores-list");
 
 
 var sections = ["welcome", "quiz", "gameover", "highscores"];
@@ -45,29 +45,15 @@ function renderHighscores() {
     timerEl.hidden = true;
    
     renderSection("highscores");
-      //save related form data as object
-    //   var dataInput = {
-    //     name: document.querySelector("#name-input").value,
-    //     highscore: score,
-    // };
-      
-    // localStorage.setItem("dataInput", JSON.stringify(dataInput));
-    // // Use JSON.parse() to convert text to JavaScript object
+    // get name and score from local storage
     var highscores = JSON.parse(localStorage.getItem("highscores"));
-    highscoresEL.innerHTML = "";
+    highscoresEl.innerHTML = "";
     for (var i = 0; i < highscores.length; i++)
     var highscoreObject = highscores[i];
+    //create element to render on highscores page
     var listItem = document.createElement ("li");
     listItem.innerText = highscoreObject.name + " - " + highscoreObject.highscore;
-    highscoresEL.appendChild(listItem)
-    // Check if data is returned, if not exit out of the function
-    // if (lastScore !== null) {
-    //    document.getElementById("saved-name").innerHTML = lastScore.name;
-    //     document.getElementById("saved-score").innerHTML = lastScore.highscore;
-    // }else {
-    //     return;
-    // }
-    
+    highscoresEl.appendChild(listItem);
 }
 
 function renderGameover() {
@@ -282,8 +268,8 @@ choicesEl.addEventListener("click", function(event) {
 });
 clearScores.addEventListener("click", function(event) {
     // clear all li elements
-    document.querySelector(".card").innerHTML = "";
+    document.querySelector(".highscores-list").innerHTML = "";
     // remove "highscores" from local storage
-    localStorage.clear();
+    localStorage.removeItem("highscores");
     renderHighscores();
 });
