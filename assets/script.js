@@ -1,26 +1,91 @@
-var viewHighscoresButton = document.querySelector(".highscore-button");
-var startButton = document.querySelector(".start-button");
-var playAgainButton = document.querySelector(".play-again");
-var timerEl = document.querySelector(".timer");
-var questionContainerEl = document.querySelector("#quiz");
-var welcome = document.querySelector("#welcome");
-var gameOver = document.querySelector("#gameover");
-var highscores = document.querySelector("#highscores");
-var clearScores = document.querySelector(".clear-scores");
-var questionEl = document.querySelector(".question-heading");
-var choicesEl = document.querySelector(".choices");
-var answerButtonEl = document.getElementById('answer');
-var submitScoresEl = document.querySelector(".score-button");
-var highscoresEl = document.querySelector(".highscores-list");
-
-
-var sections = ["welcome", "quiz", "gameover", "highscores"];
-var current = "welcome";
-var questionIndex = 0;
+// declare variables
+var viewHighscoresButton
+var startButton
+var playAgainButton
+var timerEl
+var questionContainerEl
+var welcome
+var gameOver
+var highscores
+var clearScores
+var questionEl
+var choicesEl
+var answerButtonEl
+var submitScoresEl
+var highscoresEl
+var sections
+var current
+var questionIndex
 var score;
 var timeLeft;
 var questions;
 
+// init function, called when js file is loaded
+function init() {
+    viewHighscoresButton = document.querySelector(".highscore-button");
+    startButton = document.querySelector(".start-button");
+    playAgainButton = document.querySelector(".play-again");
+    timerEl = document.querySelector(".timer");
+    questionContainerEl = document.querySelector("#quiz");
+    welcome = document.querySelector("#welcome");
+    gameOver = document.querySelector("#gameover");
+    highscores = document.querySelector("#highscores");
+    clearScores = document.querySelector(".clear-scores");
+    questionEl = document.querySelector(".question-heading");
+    choicesEl = document.querySelector(".choices");
+    answerButtonEl = document.getElementById('answer');
+    submitScoresEl = document.querySelector(".score-button");
+    highscoresEl = document.querySelector(".highscores-list");
+
+
+    sections = ["welcome", "quiz", "gameover", "highscores"];
+    current = "welcome";
+
+    // set all event listeners
+    submitScoresEl.addEventListener("click", function(event) {
+        event.preventDefault();
+        let highscores = JSON.parse(localStorage.getItem("highscores"));
+
+            if (highscores == null) {
+                highscores = [];
+            }
+
+            highscores.push(
+                {
+                    name: document.querySelector("#name-input").value,
+                    highscore: score,
+                }
+            );
+            localStorage.setItem("highscores", JSON.stringify(highscores));
+            // clear the name input field after
+            document.querySelector("#name-input").textContent = "";
+            renderHighscores();
+    });
+        
+
+    startButton.addEventListener("click", startQuiz);
+    playAgainButton.addEventListener("click", function(){
+        renderSection('welcome');
+    });
+
+    viewHighscoresButton.addEventListener("click", renderHighscores);
+    choicesEl.addEventListener("click", function(event) {
+        // ignore if target isn't a button
+        if (event.target.nodeName === "BUTTON") {
+            checkAnswer(event.target);
+        }
+    });
+    clearScores.addEventListener("click", function(event) {
+        // clear all li elements
+        document.querySelector(".highscores-list").innerHTML = "";
+        // remove "highscores" from local storage
+        localStorage.clear();
+        renderHighscores();
+    });
+    
+    // finally show the current section, which should be the welcome section assigned above
+    renderSection(current);
+}
 
 
 function hideAllSections() {
@@ -48,12 +113,13 @@ function renderHighscores() {
     // get name and score from local storage
     var highscores = JSON.parse(localStorage.getItem("highscores"));
     highscoresEl.innerHTML = "";
-    for (var i = 0; i < highscores.length; i++)
-    var highscoreObject = highscores[i];
-    //create element to render on highscores page
-    var listItem = document.createElement ("li");
-    listItem.innerText = highscoreObject.name + " - " + highscoreObject.highscore;
-    highscoresEl.appendChild(listItem);
+    for (var i = 0; i < highscores.length; i++) {
+        var highscoreObject = highscores[i];
+        //create element to render on highscores page
+        var listItem = document.createElement ("li");
+        listItem.innerText = highscoreObject.name + " - " + highscoreObject.highscore;
+        highscoresEl.appendChild(listItem);
+    }
 }
 
 function renderGameover() {
@@ -71,6 +137,7 @@ function renderTimeLeft() {
 function startQuiz() {
     score = 0;
     timeLeft = 60;
+    questionIndex = 0;
     setQuestionsList();
     renderSection("quiz");
     renderTimeLeft();
@@ -160,14 +227,13 @@ function setQuestionsList() {
             answer: "Mocha",
         },
         {
-            question: 'How is the following expression evaluated in JavaScript:\n"2" + "2" - "2"',
-            choices: [ 
-                '"2"',
-                '"20"',
-                "2",
-                "20",
+            question: "When was JavaScript invented?",
+            choices: [
+                "1995",
+                "1989",
+                "1998",
             ],
-            answer:  "20",
+            answer: "1995",
         },
         {
             question: 'How is the following expression evaluated in JavaScript:\n"2" + "2" - "2"',
@@ -232,45 +298,5 @@ function setQuestionsList() {
     ];
 }
 
-
-
-
-//event listener to start button to call startQuiz function on click 
-submitScoresEl.addEventListener("click", function(event) {
-    event.preventDefault();
-    let highscores = JSON.parse(localStorage.getItem("highscores"));
-
-        if (highscores == null) {
-            highscores = [];
-        }
-
-        highscores.push(
-            {
-                name: document.querySelector("#name-input").value,
-                highscore: score,
-            }
-        );
-        localStorage.setItem("highscores", JSON.stringify(highscores));
-        renderHighscores();
-    });
-    
-
-startButton.addEventListener("click", startQuiz);
-playAgainButton.addEventListener("click", function(){
-    location.href= "https://keltonlea.github.io/uw-homework-4/"
-});
-
-viewHighscoresButton.addEventListener("click", renderHighscores);
-choicesEl.addEventListener("click", function(event) {
-    // ignore if target isn't a button
-    if (event.target.nodeName === "BUTTON") {
-        checkAnswer(event.target);
-    }
-});
-clearScores.addEventListener("click", function(event) {
-    // clear all li elements
-    document.querySelector(".highscores-list").innerHTML = "";
-    // remove "highscores" from local storage
-    localStorage.clear();
-    renderHighscores();
-});
+// call init when the webpage loads the js file
+init();
