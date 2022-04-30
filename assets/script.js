@@ -177,6 +177,7 @@ function renderQuestion() {
             var choiceText = choices[i]
             var choiceButton = document.createElement("button");
             choiceButton.innerText = choiceText;
+            choiceButton.classList.add("btn", "btn-info");
             choicesEl.appendChild(choiceButton);
         }
         //increment question index so that we ask next question in the list next time
@@ -184,7 +185,7 @@ function renderQuestion() {
     } else {
         renderGameover();
     }
-} 
+}
 
 function checkAnswer(buttonEl) {
     var userChoice = buttonEl.innerText;

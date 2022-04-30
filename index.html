@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/style.css" />
     
     
@@ -11,7 +12,7 @@
 </head>
 <body>
     <header>
-        <a href="#highscores" class="highscore-button">View Highscores</a>
+        <a href="#" class=" highscore-button">View Highscores</a>
        <span class="timer">Time: 60 seconds </span>
     </header>
     
@@ -21,7 +22,7 @@
         <p class="start desc">Try to answer the following code-related questions within the time limit.
             Keep in mind that incorrect answers will penalize your score time by five seconds. Each question is worth five points.
         </p>
-        <button class="start-button">Start Quiz</button>
+        <button class="btn btn-info start-button">Start Quiz</button>
         </section>
 
        <section id="quiz" class="hidden">
@@ -38,7 +39,7 @@
            <form class="record-scores">
            <label for="initials">Enter Name</label>
            <input id="name-input" placeholder = "Enter Name Here"></input>
-           <button type="submit" class = "score-button" value="Submit"> Save Score</button>
+           <button type="submit" class = "btn btn-info score-button" value="Submit"> Save Score</button>
            </form>
        </section>
 
@@ -48,8 +49,8 @@
                class = "highscores-list">
                 </ul>
             <div class="highscore-buttons">
-                <button class="play-again">Play Again</button>
-                <button  class="clear-scores">Clear Highscores</button>
+                <button class="btn btn-info play-again">Play Again</button>
+                <button  class="btn btn-info clear-scores">Clear Highscores</button>
             </div>
        </section>
     </main>
