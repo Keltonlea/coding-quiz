@@ -37,4 +37,4 @@ THEN I can save my initials and my score
 ![Homework 1 Screenshot](./assets/homework-4-screenshot.png?raw=true "JavaScript Coding Quiz")
 
 ## Website URL
-https://keltonlea.github.io/uw-bootcamp-a4/
+https://keltonlea.github.io/uw-homework-4/
