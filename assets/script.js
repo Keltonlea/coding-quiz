@@ -212,9 +212,9 @@ function setQuestionsList() {
             question: "Who is considered the first computer programmer?",
             choices: [
                 "Ada Lovelace",
-                "Alan Turing",
+                "Guido van Rossum",
                 "Bill Gates",
-                "Donald Knuth",
+                "Richard Hendricks",
             ],
             answer: "Ada Lovelace",
         },
@@ -274,7 +274,7 @@ function setQuestionsList() {
             answer: "function myFunction()",
         },
         {
-            question: "JavaScript is the same as Java?",
+            question: "JavaScript is the same as Java",
             choices: [
                 "true",
                 "false",
@@ -285,8 +285,7 @@ function setQuestionsList() {
             question: "Who invented the first ever JavaScript?",
             choices: [
                 "Tim Cook",
-                "Ada Loveless",
-                "let doesn't exist in JavaScript",
+                "Ada Lovelace",
                 "Erlich Bachman",
                 "Brendan Eich",
 
@@ -294,12 +293,12 @@ function setQuestionsList() {
             answer: "Brendan Eich",
         },
         {
-            question: "Is JavaScript case-sensitive?",
+            question: "JavaScript is case-sensitive",
             choices: [
-                "Yes",
-                "No",
+                "true",
+                "false",
             ],
-            answer: "Yes",
+            answer: "true",
         },
     ];
 }
