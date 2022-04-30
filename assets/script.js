@@ -160,13 +160,14 @@ function setQuestionsList() {
             answer: "Mocha",
         },
         {
-            question: "When was JavaScript invented?",
-            choices: [
-                "1995",
-                "1989",
-                "1998",
+            question: 'How is the following expression evaluated in JavaScript:\n"2" + "2" - "2"',
+            choices: [ 
+                '"2"',
+                '"20"',
+                "2",
+                "20",
             ],
-            answer: "1995",
+            answer:  "20",
         },
         {
             question: 'How is the following expression evaluated in JavaScript:\n"2" + "2" - "2"',
