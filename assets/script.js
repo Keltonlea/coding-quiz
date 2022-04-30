@@ -1,4 +1,4 @@
-var viewHighscoresButton = document.querySelector(".highscore-buttons");
+var viewHighscoresButton = document.querySelector(".highscore-button");
 var startButton = document.querySelector(".start-button");
 var playAgainButton = document.querySelector(".play-again");
 var timerEl = document.querySelector(".timer");
@@ -270,6 +270,6 @@ clearScores.addEventListener("click", function(event) {
     // clear all li elements
     document.querySelector(".highscores-list").innerHTML = "";
     // remove "highscores" from local storage
-    localStorage.removeItem("highscores");
+    localStorage.clear();
     renderHighscores();
 });
